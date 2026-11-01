@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Elite Golf Accessories</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+body{
+    background:#f4f4f4;
+}
+
+/* HEADER */
+
+header{
+    background:#0a5c2f;
+    color:white;
+    padding:20px;
+}
+
+.navbar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+}
+
+.logo{
+    font-size:28px;
+    font-weight:bold;
+}
+
+.nav-links a{
+    color:white;
+    text-decoration:none;
+    margin-left:20px;
+    font-weight:bold;
+}
+
+/* HERO */
+
+.hero{
+    background:linear-gradient(
+        rgba(0,0,0,.5),
+        rgba(0,0,0,.5)
+    ),
+    url('https://images.unsplash.com/photo-1535131749006-b7f58c99034b?w=1600');
+    background-size:cover;
+    background-position:center;
+    height:500px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+}
+
+.hero-content{
+    color:white;
+}
+
+.hero-content h1{
+    font-size:3rem;
+}
+
+.hero-content p{
+    margin-top:15px;
+    font-size:18px;
+}
+
+.shop-btn{
+    display:inline-block;
+    margin-top:20px;
+    padding:12px 30px;
+    background:#ffd700;
+    color:black;
+    text-decoration:none;
+    border-radius:5px;
+    font-weight:bold;
+}
+
+/* PRODUCTS */
+
+.products{
+    padding:50px 8%;
+}
+
+.section-title{
+    text-align:center;
+    margin-bottom:40px;
+    color:#0a5c2f;
+}
+
+.product-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:25px;
+}
+
+.product-card{
+    background:white;
+    border-radius:10px;
+    overflow:hidden;
+    box-shadow:0 3px 10px rgba(0,0,0,.15);
+    transition:.3s;
+}
+
+.product-card:hover{
+    transform:translateY(-5px);
+}
+
+.product-card img{
+    width:100%;
+    height:230px;
+    object-fit:cover;
+}
+
+.product-info{
+    padding:15px;
+}
+
+.product-info h3{
+    margin-bottom:10px;
+}
+
+.price{
+    color:#0a5c2f;
+    font-size:20px;
+    font-weight:bold;
+    margin:10px 0;
+}
+
+.buy-btn{
+    width:100%;
+    padding:12px;
+    border:none;
+    background:#0a5c2f;
+    color:white;
+    font-weight:bold;
+    border-radius:5px;
+    cursor:pointer;
+}
+
+.buy-btn:hover{
+    background:#084521;
+}
+
+/* CART */
+
+.cart-section{
+    width:90%;
+    max-width:800px;
+    margin:40px auto;
+    background:white;
+    padding:25px;
+    border-radius:10px;
+    box-shadow:0 5px 10px rgba(0,0,0,.15);
+}
+
+.cart-section h2{
+    color:#0a5c2f;
+    margin-bottom:20px;
+}
+
+.cart-item{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:10px;
+    border-bottom:1px solid #ddd;
+}
+
+.remove-btn{
+    background:red;
+    color:white;
+    border:none;
+    padding:6px 10px;
+    cursor:pointer;
+    border-radius:4px;
+}
+
+.checkout-btn{
+    margin-top:20px;
+    background:#ffd700;
+    border:none;
+    padding:12px 20px;
+    font-size:16px;
+    font-weight:bold;
+    border-radius:5px;
+    cursor:pointer;
+}
+
+.checkout-btn:hover{
+    background:#e8c400;
+}
+
+/* FOOTER */
+
+footer{
+    margin-top:50px;
+    background:#222;
+    color:white;
+    text-align:center;
+    padding:25px;
+}
+
+.footer-btn{
+    display:inline-block;
+    margin:5px;
+    padding:10px 20px;
+    background:#0078d4;
+    color:white;
+    text-decoration:none;
+    border-radius:6px;
+}
+
+.footer-btn:hover{
+    background:#0060aa;
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+
+<div class="navbar">
+    <div class="logo">⛳ Elite Golf Accessories</div>
+
+    <div class="nav-links">
+        <a href="#">Home</a>
+        <a href="#">Shop</a>
+        <a href="#">Accessories</a>
+        <a href="#">Contact</a>
+    </div>
+</div>
+
+</header>
+
+<section class="hero">
+
+<div class="hero-content">
+    <h1>Premium Golf Accessories</h1>
+    <p>Everything You Need To Improve Your Game</p>
+
+    <a href="#products" class="shop-btn">
+        Shop Now
+    </a>
+</div>
+
+</section>
+
+<section id="products" class="products">
+
+<h2 class="section-title">Featured Products</h2>
+
+<div class="product-grid">
+
+<div class="product-card">
+    <img src="https://images.unsplash.com/photo-1592919505780-303950717480?w=600">
+    <div class="product-info">
+        <h3>Pro Golf Balls</h3>
+        <p>Tournament quality performance.</p>
+        <div class="price">$29.99</div>
+
+        <button class="buy-btn"
+        onclick="addToCart('Pro Golf Balls',29.99)">
+            Add To Cart
+        </button>
+    </div>
+</div>
+
+<div class="product-card">
+    <img src="https://images.unsplash.com/photo-1587174486073-ae5e5cff23aa?w=600">
+    <div class="product-info">
+        <h3>Premium Golf Glove</h3>
+        <p>Superior comfort and grip.</p>
+        <div class="price">$14.99</div>
+
+        <button class="buy-btn"
+        onclick="addToCart('Premium Golf Glove',14.99)">
+            Add To Cart
+        </button>
+    </div>
+</div>
+
+<div class="product-card">
+    <img src="https://images.unsplash.com/photo-1600132806608-231446b2e7af?w=600">
+    <div class="product-info">
+        <h3>Wood Golf Tees</h3>
+        <p>Durable competition tees.</p>
+        <div class="price">$9.99</div>
+
+        <button class="buy-btn"
+        onclick="addToCart('Wood Golf Tees',9.99)">
+            Add To Cart
+        </button>
+    </div>
+</div>
+
+<div class="product-card">
+    <img src="https://images.unsplash.com/photo-1624661540893-9c4b5f544fc0?w=600">
+    <div class="product-info">
+        <h3>Tour Golf Bag</h3>
+        <p>Professional lightweight design.</p>
+        <div class="price">$149.99</div>
+
+        <button class="buy-btn"
+        onclick="addToCart('Tour Golf Bag',149.99)">
+            Add To Cart
+        </button>
+    </div>
+</div>
+
+</div>
+
+</section>
+
+<section class="cart-section">
+
+<h2>🛒 Shopping Cart</h2>
+
+<div id="cart-items"></div>
+
+<h3>
+Total: $
+<span id="cart-total">0.00</span>
+</h3>
+
+<button class="checkout-btn"
+onclick="checkout()">
+Checkout
+</button>
+
+</section>
+
+<footer>
+
+<h3>Golf Resources</h3>
+
+<a class="footer-btn"
+href="https://www.golfdigest.com"
+target="_blank">
+Golf Digest
+</a>
+
+<a class="footer-btn"
+href="https://www.pgatour.com"
+target="_blank">
+PGA Tour
+</a>
+
+<a class="footer-btn"
+href="https://www.golf.com"
+target="_blank">
+Golf.com
+</a>
+
+<p style="margin-top:20px;">
+© 2026 Elite Golf Accessories
+</p>
+
+</footer>
+
+<script>
+
+let cart =
+JSON.parse(localStorage.getItem("golfCart")) || [];
+
+function addToCart(name, price){
+
+    cart.push({
+        name:name,
+        price:price
+    });
+
+    updateCart();
+}
+
+function removeItem(index){
+
+    cart.splice(index,1);
+
+    updateCart();
+}
+
+function updateCart(){
+
+    const cartItems =
+    document.getElementById("cart-items");
+
+    const cartTotal =
+    document.getElementById("cart-total");
+
+    cartItems.innerHTML="";
+
+    let total=0;
+
+    cart.forEach((item,index)=>{
+
+        total += item.price;
+
+        cartItems.innerHTML += `
+        <div class="cart-item">
+            <span>
+                ${item.name}
+                -
+                $${item.price.toFixed(2)}
+            </span>
+
+            <button class="remove-btn"
+            onclick="removeItem(${index})">
+                Remove
+            </button>
+        </div>
+        `;
+    });
+
+    cartTotal.textContent =
+    total.toFixed(2);
+
+    localStorage.setItem(
+        "golfCart",
+        JSON.stringify(cart)
+    );
+}
+
+function checkout(){
+
+    if(cart.length===0){
+        alert("Your cart is empty.");
+        return;
+    }
+
+    let summary =
+    "ORDER SUMMARY\n\n";
+
+    cart.forEach(item=>{
+
+        summary +=
+        item.name +
+        " - $" +
+        item.price.toFixed(2) +
+        "\n";
+    });
+
+    summary +=
+    "\nTOTAL: $" +
+    document.getElementById("cart-total").textContent;
+
+    alert(summary);
+
+    cart = [];
+
+    updateCart();
+
+    alert("Thank you for your purchase!");
+}
+
+updateCart();
+
+</script>
+
+</body>
+</html>
