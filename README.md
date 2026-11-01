@@ -213,4 +213,262 @@ footer{
 }
 
 .footer-btn{
-    display:inline-block
+    display:inline-block;
+    margin:5px;
+    padding:10px 20px;
+    background:#0078d4;
+    color:white;
+    text-decoration:none;
+    border-radius:6px;
+}
+
+.footer-btn:hover{
+    background:#0060aa;
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+
+<div class="navbar">
+    <div class="logo">⛳ Elite Golf Accessories</div>
+
+    <div class="nav-links">
+        <a href="#">Home</a>
+        <a href="#">Shop</a>
+        <a href="#">Accessories</a>
+        <a href="#">Contact</a>
+    </div>
+</div>
+
+</header>
+
+<section class="hero">
+
+<div class="hero-content">
+    <h1>Premium Golf Accessories</h1>
+    <p>Everything You Need To Improve Your Game</p>
+
+    <a href="#products" class="shop-btn">
+        Shop Now
+    </a>
+</div>
+
+</section>
+
+<section id="products" class="products">
+
+<h2 class="section-title">Featured Products</h2>
+
+<div class="product-grid">
+
+<div class="product-card">
+    <img src="https://images.unsplash.com/photo-1592919505780-303950717480?w=600">
+    <div class="product-info">
+        <h3>Pro Golf Balls</h3>
+        <p>Tournament quality performance.</p>
+        <div class="price">$29.99</div>
+
+        <button class="buy-btn"
+        onclick="addToCart('Pro Golf Balls',29.99)">
+            Add To Cart
+        </button>
+    </div>
+</div>
+
+<div class="product-card">
+    <img src="https://images.unsplash.com/photo-1587174486073-ae5e5cff23aa?w=600">
+    <div class="product-info">
+        <h3>Premium Golf Glove</h3>
+        <p>Superior comfort and grip.</p>
+        <div class="price">$14.99</div>
+
+        <button class="buy-btn"
+        onclick="addToCart('Premium Golf Glove',14.99)">
+            Add To Cart
+        </button>
+    </div>
+</div>
+
+<div class="product-card">
+    <img src="https://images.unsplash.com/photo-1600132806608-231446b2e7af?w=600">
+    <div class="product-info">
+        <h3>Wood Golf Tees</h3>
+        <p>Durable competition tees.</p>
+        <div class="price">$9.99</div>
+
+        <button class="buy-btn"
+        onclick="addToCart('Wood Golf Tees',9.99)">
+            Add To Cart
+        </button>
+    </div>
+</div>
+
+<div class="product-card">
+    <img src="https://images.unsplash.com/photo-1624661540893-9c4b5f544fc0?w=600">
+    <div class="product-info">
+        <h3>Tour Golf Bag</h3>
+        <p>Professional lightweight design.</p>
+        <div class="price">$149.99</div>
+
+        <button class="buy-btn"
+        onclick="addToCart('Tour Golf Bag',149.99)">
+            Add To Cart
+        </button>
+    </div>
+</div>
+
+</div>
+
+</section>
+
+<section class="cart-section">
+
+<h2>🛒 Shopping Cart</h2>
+
+<div id="cart-items"></div>
+
+<h3>
+Total: $
+<span id="cart-total">0.00</span>
+</h3>
+
+<button class="checkout-btn"
+onclick="checkout()">
+Checkout
+</button>
+
+</section>
+
+<footer>
+
+<h3>Golf Resources</h3>
+
+<a class="footer-btn"
+href="https://www.golfdigest.com"
+target="_blank">
+Golf Digest
+</a>
+
+<a class="footer-btn"
+href="https://www.pgatour.com"
+target="_blank">
+PGA Tour
+</a>
+
+<a class="footer-btn"
+href="https://www.golf.com"
+target="_blank">
+Golf.com
+</a>
+
+<p style="margin-top:20px;">
+© 2026 Elite Golf Accessories
+</p>
+
+</footer>
+
+<script>
+
+let cart =
+JSON.parse(localStorage.getItem("golfCart")) || [];
+
+function addToCart(name, price){
+
+    cart.push({
+        name:name,
+        price:price
+    });
+
+    updateCart();
+}
+
+function removeItem(index){
+
+    cart.splice(index,1);
+
+    updateCart();
+}
+
+function updateCart(){
+
+    const cartItems =
+    document.getElementById("cart-items");
+
+    const cartTotal =
+    document.getElementById("cart-total");
+
+    cartItems.innerHTML="";
+
+    let total=0;
+
+    cart.forEach((item,index)=>{
+
+        total += item.price;
+
+        cartItems.innerHTML += `
+        <div class="cart-item">
+            <span>
+                ${item.name}
+                -
+                $${item.price.toFixed(2)}
+            </span>
+
+            <button class="remove-btn"
+            onclick="removeItem(${index})">
+                Remove
+            </button>
+        </div>
+        `;
+    });
+
+    cartTotal.textContent =
+    total.toFixed(2);
+
+    localStorage.setItem(
+        "golfCart",
+        JSON.stringify(cart)
+    );
+}
+
+function checkout(){
+
+    if(cart.length===0){
+        alert("Your cart is empty.");
+        return;
+    }
+
+    let summary =
+    "ORDER SUMMARY\n\n";
+
+    cart.forEach(item=>{
+
+        summary +=
+        item.name +
+        " - $" +
+        item.price.toFixed(2) +
+        "\n";
+    });
+
+    summary +=
+    "\nTOTAL: $" +
+    document.getElementById("cart-total").textContent;
+
+    alert(summary);
+
+    cart = [];
+
+    updateCart();
+
+    alert("Thank you for your purchase!");
+}
+
+updateCart();
+
+</script>
+
+</body>
+</html>
